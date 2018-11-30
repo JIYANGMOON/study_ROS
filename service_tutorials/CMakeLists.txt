@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(topic_first)
+project(service_tutorials)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -46,16 +46,16 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(FILES
-  simplemsg.msg
-)
+# add_message_files(
+#   FILES
+#   Message1.msg
+#   Message2.msg
+# )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(FILES
+  SrvTutorials.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -102,7 +102,7 @@ catkin_package(
   CATKIN_DEPENDS
   message_runtime
 #  INCLUDE_DIRS include
-#  LIBRARIES topic_first
+#  LIBRARIES service_tutorials
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -121,7 +121,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/topic_first.cpp
+#   src/${PROJECT_NAME}/service_tutorials.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -132,7 +132,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/topic_first_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/service_tutorials_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -189,7 +189,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_topic_first.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_service_tutorials.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
@@ -198,18 +198,18 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
-add_executable(simple_pub
-  src/simple_pub.cpp
+add_executable(client_tutorials
+  src/client_tutorials.cpp
 )
-add_dependencies(simple_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(simple_pub
+add_dependencies(client_tutorials ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(client_tutorials
   ${catkin_LIBRARIES}
 )
 
-add_executable(simple_sub
-  src/simple_sub.cpp
+add_executable(server_tutorial
+  src/server_tutorial.cpp
 )
-add_dependencies(simple_sub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(simple_sub
+add_dependencies(server_tutorial ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(server_tutorial
   ${catkin_LIBRARIES}
 )
